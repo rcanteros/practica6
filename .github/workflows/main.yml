@@ -40,7 +40,7 @@ jobs:
           python test_application.py
           
   deploy:
-      # Only run this job if "build" has ended successfully
+    # Only run this job if "build" has ended successfully
     needs:
       - build
 
@@ -54,7 +54,7 @@ jobs:
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
-         python-version: "3.9"
+          python-version: "3.9"
 
       # Elastic Beanstalk CLI version
       - name: Get EB CLI version
@@ -75,10 +75,10 @@ jobs:
 
       # Create the Elastic Beanstalk application
       - name: Create EBS application
-       run: |
-         eb init -p python-3.8 Flask_Basic --region eu-central-1
+        run: |
+          eb init -p python-3.8 Flask_Basic --region eu-central-1
 
       # Deploy to (or Create) the Elastic Beanstalk environment
       - name: Create test environment & deploy
-      run: |
-        (eb use test-environment && eb status test-environment && eb deploy) || eb create test-environment
+        run: |
+          (eb use test-environment && eb status test-environment && eb deploy) || eb create test-environment
