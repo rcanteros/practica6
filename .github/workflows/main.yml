@@ -38,6 +38,7 @@ jobs:
       - name: Run unit tests
         run: |
           python test_application.py
+          
   deploy:
   # Only run this job if "build" has ended successfully
   needs:
@@ -75,7 +76,7 @@ jobs:
     # Create the Elastic Beanstalk application
     - name: Create EBS application
       run: |
-        eb init -p python-3.8 Flask_Basic --region us-east-1
+        eb init -p python-3.8 Flask_Basic --region eu-central-1
 
     # Deploy to (or Create) the Elastic Beanstalk environment
     - name: Create test environment & deploy
